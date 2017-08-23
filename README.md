@@ -1,2 +1,1 @@
-# ColorSelector
-A minimalist color picker for Android.
+![Banner Color Selector](img/banner.png)
