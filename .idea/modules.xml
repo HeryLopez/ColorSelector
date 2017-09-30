@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ColorSelector.iml" filepath="$PROJECT_DIR$/ColorSelector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ColorSelector.iml" filepath="$PROJECT_DIR$/ColorSelector.iml" />
       <module fileurl="file://$PROJECT_DIR$/ColorSelectorLib/ColorSelectorLib.iml" filepath="$PROJECT_DIR$/ColorSelectorLib/ColorSelectorLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ColorSelectorLib/ColorSelectorLib.iml" filepath="$PROJECT_DIR$/ColorSelectorLib/ColorSelectorLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Example/Example.iml" filepath="$PROJECT_DIR$/Example/Example.iml" />
       <module fileurl="file://$PROJECT_DIR$/Example/Example.iml" filepath="$PROJECT_DIR$/Example/Example.iml" />
     </modules>
   </component>
