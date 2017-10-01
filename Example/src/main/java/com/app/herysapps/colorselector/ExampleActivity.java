@@ -21,7 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.app.herysapps.colorselectorlib.ColorPickerDialog;
+import com.app.herysapps.colorselectorlib.ColorSelectorDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +35,11 @@ import java.util.List;
  * Author: https://github.com/HeryLopez
  * Project: https://github.com/HeryLopez/ColorSelector
  */
-public class ExampleActivity extends AppCompatActivity implements ColorPickerDialog.IColorPickerClick {
+public class ExampleActivity extends AppCompatActivity implements ColorSelectorDialog.IColorPickerClick {
 
     // Color selector
-    private ColorPickerDialog colorPickerDialog01;
-    private ColorPickerDialog colorPickerDialog02;
+    private ColorSelectorDialog colorSelectorDialog1;
+    private ColorSelectorDialog colorSelectorDialog2;
 
     // Identifier for de color selector
     private String COLOR_SELECTOR_01 = "colorSelector01";
@@ -78,21 +78,21 @@ public class ExampleActivity extends AppCompatActivity implements ColorPickerDia
         colorList01.add(18, R.color.brown);
         colorList01.add(19, R.color.black);
 
-        colorPickerDialog01 = new ColorPickerDialog();
-        colorPickerDialog01.setColorSelectorName(COLOR_SELECTOR_01);
-        colorPickerDialog01.setTitre("Colors");
-        colorPickerDialog01.setColorList(colorList01);
-        colorPickerDialog01.setFigure(ColorPickerDialog.SQUARE);
+        colorSelectorDialog1 = new ColorSelectorDialog();
+        colorSelectorDialog1.setColorSelectorName(COLOR_SELECTOR_01);
+        colorSelectorDialog1.setTitre("Colors");
+        colorSelectorDialog1.setColorList(colorList01);
+        colorSelectorDialog1.setFigure(ColorSelectorDialog.SQUARE);
 
         // Restore color select from saved state
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey(COLOR_01)) {
-                colorPickerDialog01.setIdSelectedColor(savedInstanceState.getInt(COLOR_01));
+                colorSelectorDialog1.setIdSelectedColor(savedInstanceState.getInt(COLOR_01));
             }
         } else {
-            colorPickerDialog01.setIdSelectedColor(R.color.light_green);
+            colorSelectorDialog1.setIdSelectedColor(R.color.light_green);
         }
-        (findViewById(R.id.colorSelected01)).setBackgroundColor(ContextCompat.getColor(this, colorPickerDialog01.getIdSelectedColor()));
+        (findViewById(R.id.colorSelected01)).setBackgroundColor(ContextCompat.getColor(this, colorSelectorDialog1.getIdSelectedColor()));
 
 
         // -----------------------------------------------------------------------------------------
@@ -115,14 +115,14 @@ public class ExampleActivity extends AppCompatActivity implements ColorPickerDia
         colorList02.add(R.color.amber);
         colorList02.add(R.color.orange);
 
-        colorPickerDialog02 = new ColorPickerDialog();
-        colorPickerDialog02.setColorSelectorName(COLOR_SELECTOR_02);
-        colorPickerDialog02.setColorList(colorList02);
+        colorSelectorDialog2 = new ColorSelectorDialog();
+        colorSelectorDialog2.setColorSelectorName(COLOR_SELECTOR_02);
+        colorSelectorDialog2.setColorList(colorList02);
 
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey(COLOR_02)) {
-                colorPickerDialog02.setIdSelectedColor(savedInstanceState.getInt(COLOR_02));
-                (findViewById(R.id.colorSelected02)).setBackgroundColor(ContextCompat.getColor(this, colorPickerDialog02.getIdSelectedColor()));
+                colorSelectorDialog2.setIdSelectedColor(savedInstanceState.getInt(COLOR_02));
+                (findViewById(R.id.colorSelected02)).setBackgroundColor(ContextCompat.getColor(this, colorSelectorDialog2.getIdSelectedColor()));
             }
         }
 
@@ -132,14 +132,14 @@ public class ExampleActivity extends AppCompatActivity implements ColorPickerDia
         (findViewById(R.id.buttonSelector01)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                colorPickerDialog01.show(getSupportFragmentManager(), "colorPicker");
+                colorSelectorDialog1.show(getSupportFragmentManager(), "colorPicker");
             }
         });
 
         (findViewById(R.id.buttonSelector02)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                colorPickerDialog02.show(getSupportFragmentManager(), "colorPicker");
+                colorSelectorDialog2.show(getSupportFragmentManager(), "colorPicker");
             }
         });
 
@@ -147,22 +147,21 @@ public class ExampleActivity extends AppCompatActivity implements ColorPickerDia
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        if (colorPickerDialog01.getIdSelectedColor() != -1)
-            outState.putInt(COLOR_01, colorPickerDialog01.getIdSelectedColor());
+        if (colorSelectorDialog1.getIdSelectedColor() != -1)
+            outState.putInt(COLOR_01, colorSelectorDialog1.getIdSelectedColor());
 
-        if (colorPickerDialog02.getIdSelectedColor() != -1)
-            outState.putInt(COLOR_02, colorPickerDialog02.getIdSelectedColor());
+        if (colorSelectorDialog2.getIdSelectedColor() != -1)
+            outState.putInt(COLOR_02, colorSelectorDialog2.getIdSelectedColor());
 
         super.onSaveInstanceState(outState);
     }
 
     @Override
-    public void ColorSelected(String colorSelectorName, int color) {
+    public void onColorSelected(String colorSelectorName, int color) {
 
         if (colorSelectorName.equals(COLOR_SELECTOR_01)) {
             if (color != -1) {
                 (findViewById(R.id.colorSelected01)).setBackgroundColor(ContextCompat.getColor(this, color));
-                //(findViewById(R.id.colorSelected01)).setTag(color);
             } else {
                 (findViewById(R.id.colorSelected01)).setBackground(null);
             }
@@ -171,7 +170,6 @@ public class ExampleActivity extends AppCompatActivity implements ColorPickerDia
         if (colorSelectorName.equals(COLOR_SELECTOR_02)) {
             if (color != -1) {
                 (findViewById(R.id.colorSelected02)).setBackgroundColor(ContextCompat.getColor(this, color));
-                //(findViewById(R.id.colorSelected02)).setTag(color);
             } else {
                 (findViewById(R.id.colorSelected02)).setBackground(null);
             }

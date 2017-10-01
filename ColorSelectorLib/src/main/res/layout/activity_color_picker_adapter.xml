@@ -6,10 +6,10 @@
     android:layout_height="wrap_content"
     android:fadeScrollbars="false"
     android:padding="32dp"
-    tools:context="com.app.herysapps.colorselectorlib.ColorPickerDialog">
+    tools:context="com.app.herysapps.colorselectorlib.ColorSelectorDialog">
 
     <LinearLayout
-        android:id="@+id/rootLayout"
+        android:id="@+id/rootLayoutColorSelector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

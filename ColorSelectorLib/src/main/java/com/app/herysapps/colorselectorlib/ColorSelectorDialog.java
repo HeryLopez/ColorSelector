@@ -43,7 +43,7 @@ import java.util.List;
  * Author: <a href="https://github.com/HeryLopez/">https://github.com/HeryLopez</a>
  * <br/>Project:  <a href="https://github.com/HeryLopez/ColorSelector">https://github.com/HeryLopez/ColorSelector</a>
  */
-public class ColorPickerDialog extends DialogFragment implements View.OnClickListener {
+public class ColorSelectorDialog extends DialogFragment implements View.OnClickListener {
 
     // TODO There is an error when: 0) Select a color 1) Open the dialog. 2) While open, change the phone orientation. 3) Select a other color. 4) Reopen the dialog. Error: The indicator shows the color of the step 0.
 
@@ -65,7 +65,7 @@ public class ColorPickerDialog extends DialogFragment implements View.OnClickLis
     /**
      * A minimalist color picker for Android.
      */
-    public ColorPickerDialog() {
+    public ColorSelectorDialog() {
         // Default values
         mFigure = CIRCLE;
         mBackgroundColor = R.color.default_background_color;
@@ -170,7 +170,7 @@ public class ColorPickerDialog extends DialogFragment implements View.OnClickLis
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_color_picker_adapter, null);
 
-        BuildView(view);
+        buildView(view);
 
         builderCurrency.setView(view);
 
@@ -183,9 +183,9 @@ public class ColorPickerDialog extends DialogFragment implements View.OnClickLis
     }
 
 
-    private void BuildView(View view) {
+    private void buildView(View view) {
 
-        ((LinearLayout) view.findViewById(R.id.rootLayout)).removeAllViews();
+        ((LinearLayout) view.findViewById(R.id.rootLayoutColorSelector)).removeAllViews();
         view.setBackgroundResource(mBackgroundColor);
 
         LinearLayout.LayoutParams layoutParamsContainer = new LinearLayout.LayoutParams(
@@ -251,7 +251,7 @@ public class ColorPickerDialog extends DialogFragment implements View.OnClickLis
                 index = index + 1;
             }
 
-            ((LinearLayout) view.findViewById(R.id.rootLayout)).addView(lineLayout);
+            ((LinearLayout) view.findViewById(R.id.rootLayoutColorSelector)).addView(lineLayout);
         }
 
     }
@@ -274,7 +274,7 @@ public class ColorPickerDialog extends DialogFragment implements View.OnClickLis
             mIdSelectedColor = -1;
         }
 
-        NotifyListener();
+        notifyListener();
 
         this.getDialog().cancel();
     }
@@ -283,8 +283,8 @@ public class ColorPickerDialog extends DialogFragment implements View.OnClickLis
     /**
      * It notifies all classes who are listened.
      */
-    private void NotifyListener() {
-        mListener.ColorSelected(mColorSelectorName, mIdSelectedColor);
+    private void notifyListener() {
+        mListener.onColorSelected(mColorSelectorName, mIdSelectedColor);
     }
 
 
@@ -296,7 +296,7 @@ public class ColorPickerDialog extends DialogFragment implements View.OnClickLis
             mListener = (IColorPickerClick) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement ColorPickerDialog.IColorPickerClick");
+                    + " must implement ColorSelectorDialog.IColorPickerClick");
         }
     }
 
@@ -310,6 +310,6 @@ public class ColorPickerDialog extends DialogFragment implements View.OnClickLis
      * Interface for pattern observer
      */
     public interface IColorPickerClick {
-        void ColorSelected(String colorSelectorName, int selectedColor);
+        void onColorSelected(String colorSelectorName, int selectedColor);
     }
 }
