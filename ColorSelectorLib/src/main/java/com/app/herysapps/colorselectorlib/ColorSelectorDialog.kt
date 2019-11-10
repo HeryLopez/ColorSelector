@@ -24,26 +24,15 @@ class ColorSelectorDialog : DialogFragment(), View.OnClickListener {
     internal var colorList: List<Int> = mutableListOf()
     internal var figureType: FigureType = FigureType.CIRCLE
 
-    var isDialogVisible : Boolean = false
     var selectedColor: Int? = null
 
-    override fun onPause() {
-        isDialogVisible = false
-        this.dismiss()
-        super.onPause()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // NOTE: The example module shows how to handle configuration changes
         return inflater.inflate(R.layout.activity_color_picker_adapter, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        requireDialog().setOnDismissListener {
-            isDialogVisible = false
-        }
-
         buildView(view)
     }
 
@@ -127,19 +116,15 @@ class ColorSelectorDialog : DialogFragment(), View.OnClickListener {
         }
 
         onDialogColorClickListener.onColorClick(tagDialog, selectedColor)
-
-        isDialogVisible = false
         this.dismiss()
     }
 
     override fun show(manager: FragmentManager, tag: String?) {
-        isDialogVisible = true
         this.tagDialog = tag!!
         super.show(manager, tag)
     }
 
     override fun show(transaction: FragmentTransaction, tag: String?): Int {
-        isDialogVisible = true
         this.tagDialog = tag!!
         return super.show(transaction, tag)
     }

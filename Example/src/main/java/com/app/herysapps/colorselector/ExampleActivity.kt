@@ -1,5 +1,6 @@
 package com.app.herysapps.colorselector
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
@@ -25,6 +26,8 @@ class ExampleActivity : AppCompatActivity(), ColorSelectorDialog.OnDialogColorCl
     private val COLOR_02 = "COLOR_02"
     private val DIALOG_01_IS_VISIBLE = "DIALOG_01_IS_VISIBLE"
     private val DIALOG_02_IS_VISIBLE = "DIALOG_02_IS_VISIBLE"
+
+    var visibleDialog1: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +106,23 @@ class ExampleActivity : AppCompatActivity(), ColorSelectorDialog.OnDialogColorCl
     }
 
     private fun showDialog(dialog: ColorSelectorDialog, tag: String) {
+
+        try {
+            val ft = supportFragmentManager.beginTransaction()
+            val prev = supportFragmentManager.findFragmentByTag(tag)
+            if (prev != null) {
+                ft.remove(prev)
+                (prev as ColorSelectorDialog).dismiss()
+            }
+            ft.addToBackStack(null)
+        }catch (e: Exception){ }
         dialog.show(supportFragmentManager, tag)
+    }
+
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        visibleDialog1 = colorSelectorDialog1.isVisible
+        super.onConfigurationChanged(newConfig)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -113,8 +132,8 @@ class ExampleActivity : AppCompatActivity(), ColorSelectorDialog.OnDialogColorCl
         if (colorSelectorDialog2.selectedColor != null)
             outState.putInt(COLOR_02, colorSelectorDialog2.selectedColor!!)
 
-        outState.putBoolean(DIALOG_01_IS_VISIBLE, colorSelectorDialog1.isDialogVisible)
-        outState.putBoolean(DIALOG_02_IS_VISIBLE, colorSelectorDialog2.isDialogVisible)
+        outState.putBoolean(DIALOG_01_IS_VISIBLE, colorSelectorDialog1.isVisible)
+        outState.putBoolean(DIALOG_02_IS_VISIBLE, colorSelectorDialog2.isVisible)
 
         super.onSaveInstanceState(outState)
     }
