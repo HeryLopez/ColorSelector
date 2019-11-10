@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Color Selector Examples</string>
-
     <string name="example_1">Example 1</string>
     <string name="example_1_text">List&lt;Integer&gt; colorList01 = new ArrayList&lt;Integer&gt;();\ncolorList01.add(R.color.red);\ncolorList01.add(R.color.pink);\ncolorList01.add(R.color.purple);\n&#8230;\ncolorPickerDialog01.setColorList(colorList01);\ncolorPickerDialog01.setTitre(\"Colors\");\ncolorPickerDialog01.setFigure(ColorPickerDialog.SQUARE);\ncolorPickerDialog01.setIdSelectedColor(R.color.light_green);\ncolorPickerDialog01.setColorSelectorName(\"colorSelector01\");</string>
     <string name="example_2">Example 2</string>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadeScrollbars="false"
     tools:context="com.app.herysapps.colorselectorlib.ColorSelectorDialog">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <RelativeLayout
         android:id="@+id/activity_example"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,8 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView1"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="6dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/example_1_text"
                 android:textColor="#8a000000"
                 android:textSize="12sp" />
@@ -45,18 +44,22 @@
                 android:id="@+id/buttonSelector01"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/textViewDesc1"
-                android:text="@string/button_01" />
+                android:layout_alignParentStart="true"
+                android:text="@string/button_01"
+                android:layout_alignParentLeft="true" />
 
             <RelativeLayout
                 android:id="@+id/colorSelected01"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:layout_alignParentEnd="true"
                 android:layout_below="@+id/textViewDesc1"
+                android:layout_alignParentEnd="true"
                 android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/buttonSelector01" />
+                android:layout_toEndOf="@id/buttonSelector01"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/buttonSelector01"
+                android:layout_marginLeft="16dp" />
 
         </RelativeLayout>
 
@@ -65,8 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/layoutSelectColor01"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
             android:background="@color/black" />
 
         <RelativeLayout
@@ -90,8 +93,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="6dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/example_2_text"
                 android:textColor="#8a000000"
                 android:textSize="12sp" />
@@ -100,18 +103,22 @@
                 android:id="@+id/buttonSelector02"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/textViewDesc2"
-                android:text="@string/button_02" />
+                android:layout_alignParentStart="true"
+                android:text="@string/button_02"
+                android:layout_alignParentLeft="true" />
 
             <RelativeLayout
                 android:id="@+id/colorSelected02"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:layout_alignParentEnd="true"
                 android:layout_below="@+id/textViewDesc2"
+                android:layout_alignParentEnd="true"
                 android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/buttonSelector02" />
+                android:layout_toEndOf="@id/buttonSelector02"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/buttonSelector02" />
 
         </RelativeLayout>
 
