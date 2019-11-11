@@ -1,10 +1,28 @@
 <resources>
     <string name="app_name">Color Selector Examples</string>
-
-    <string name="example_1">Example 1</string>
-    <string name="example_1_text">List&lt;Integer&gt; colorList01 = new ArrayList&lt;Integer&gt;();\ncolorList01.add(R.color.red);\ncolorList01.add(R.color.pink);\ncolorList01.add(R.color.purple);\n&#8230;\ncolorPickerDialog01.setColorList(colorList01);\ncolorPickerDialog01.setTitre(\"Colors\");\ncolorPickerDialog01.setFigure(ColorPickerDialog.SQUARE);\ncolorPickerDialog01.setIdSelectedColor(R.color.light_green);\ncolorPickerDialog01.setColorSelectorName(\"colorSelector01\");</string>
-    <string name="example_2">Example 2</string>
-    <string name="example_2_text">List&lt;Integer&gt; colorList02 = new ArrayList&lt;Integer&gt;();\ncolorList02.add(R.color.red);\ncolorList02.add(R.color.pink);\ncolorList02.add(R.color.purple);\n&#8230;\ncolorPickerDialog02.setColorList(colorList02);\ncolorPickerDialog02.setTitre(\"\");\ncolorPickerDialog02.setFigure(ColorPickerDialog.CIRCLE);\ncolorPickerDialog02.setIdSelectedColor(-1);\ncolorPickerDialog02.setColorSelectorName(\"colorSelector02\");</string>
-    <string name="button_01">Select Color 01</string>
-    <string name="button_02">Select Color 02</string>
+    <string name="button_01">colorSelectorDialog1</string>
+    <string name="button_02">colorSelectorDialog2</string>
+    <string name="pepe">
+        val colorList = ArrayList&lt;Int&gt;()\n
+        colorList.add(0, R.color.red)\n
+        colorList.add(1, R.color.pink)\n
+        colorList.add(2, R.color.purple)\n
+        &#8230;\n\n
+        val builder1 = ColorSelectorDialogBuilder()\n
+        var colorSelectorDialog1 = builder1.setOnDialogColorClickListener(this)\n
+        .setColorList(getColorsList())\n
+        .setSelectedColor(R.color.light_green)\n
+        .setFigureType(FigureType.CIRCLE)\n
+        .build()
+        \n\n
+        val builder2 = ColorSelectorDialogBuilder()\n
+        colorSelectorDialog2 = builder2.setOnDialogColorClickListener(this)\n
+        .setColorList(getColorsList(true))\n
+        .setFigureType(FigureType.SQUARE)\n
+        .build()\n
+        \n
+        colorSelectorDialog1.show(supportFragmentManager, tag)\n
+        colorSelectorDialog2.show(supportFragmentManager, tag)\n
+    </string>
+    <string name="note">Note: The example module shows how to handle configuration changes</string>
 </resources>
