@@ -74,6 +74,7 @@ class ColorSelectorDialog : DialogFragment(), View.OnClickListener {
                     val colorARGB = ContextCompat.getColor(context!!, colorID)
 
                     imageButton.tag = colorID
+                    imageButton.contentDescription = "Color $index"
                     imageButton.setOnClickListener(this)
 
                     // Circle
